@@ -1,11 +1,19 @@
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()
 import tf_slim as slim
-import numpy as np
 from tensorflow.python.layers.core import Dense
 from tf_slim.layers import layers as _layers
+import numpy as np
 
 class LSTM_Model():
+
+    def generate_laplace_noise(self, shape, mean, scale):
+        uniform = tf.random.uniform(shape, minval=0, maxval=1, dtype=tf.float32)
+        scale = tf.cast(scale, dtype=tf.float32)
+        with tf.compat.v1.variable_scope("laplace_noise"):
+            noise = scale * tf.sign(uniform - 0.5) * tf.log(1 - 2 * tf.abs(uniform - 0.5))
+        return noise + mean
+
     def __init__(self, input_shape, lr, a_dim, v_dim, t_dim, emotions, attn_fusion=True, unimodal=False,
                  enable_attn_2=False, seed=1234):
         if unimodal:
@@ -279,11 +287,13 @@ class LSTM_Model():
         self.inter1 = self.inter1 * tf.expand_dims(self.mask, axis=-1)
         self.inter1 = tf.nn.dropout(self.inter1, 1 - self.dropout)
 
-        sensitivity = 1 / tf.shape(self.output)[-1]
-        privacy_budget = 0.1
-        laplace_noise = tf.random.laplace(shape=tf.shape(self.output), mean=0.0, scale=sensitivity/privacy_budget, dtype=tf.float32)
         self.output = Dense(self.emotions, kernel_initializer=init,
                             kernel_regularizer=slim.l2_regularizer(0.001))(self.inter1)
+        
+        sensitivity = 1 / tf.shape(self.output)[-1]
+        privacy_budget = 0.1
+        laplace_noise = self.generate_laplace_noise(shape=tf.shape(self.output), mean=0.0, scale=sensitivity/privacy_budget)
+
         noisy_output = self.output + laplace_noise
 
         # print('self.output', self.output.get_shape())
