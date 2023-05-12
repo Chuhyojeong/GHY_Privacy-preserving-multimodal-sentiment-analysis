@@ -1,0 +1,1771 @@
+Namespace(attention_2=False, classes=2, data='mosi', fusion=False, unimodal=True, use_raw=False)
+Training unimodals first
+('starting unimodal ', 'text', 'mosi')
+train_mask (62, 63)
+seqlen_train (62,)
+seqlen_test (31,)
+Using GPU -  /device:GPU:0
+Trainable parameters: 80602
+
+Evaluation before training:
+EVAL: epoch 0: step 0, loss 34.1357, acc 0.514628
+1.23.5
+
+Training epoch 1
+	 	Epoch 1:, loss 38.2068, accuracy 0.518472
+EVAL: After epoch 1: step 4, loss 1.17088, acc 0.514628
+1.23.5
+
+Training epoch 2
+	 	Epoch 2:, loss 35.7346, accuracy 0.521007
+EVAL: After epoch 2: step 8, loss 1.1448, acc 0.493351
+1.23.5
+
+Training epoch 3
+	 	Epoch 3:, loss 33.7881, accuracy 0.535019
+EVAL: After epoch 3: step 12, loss 1.28549, acc 0.518617
+1.23.5
+
+Training epoch 4
+	 	Epoch 4:, loss 35.8643, accuracy 0.500899
+EVAL: After epoch 4: step 16, loss 1.347, acc 0.489362
+1.23.5
+
+Training epoch 5
+	 	Epoch 5:, loss 39.6059, accuracy 0.516003
+EVAL: After epoch 5: step 20, loss 1.30964, acc 0.474734
+1.23.5
+
+Training epoch 6
+	 	Epoch 6:, loss 39.0102, accuracy 0.491043
+EVAL: After epoch 6: step 24, loss 1.22023, acc 0.5
+1.23.5
+
+Training epoch 7
+	 	Epoch 7:, loss 38.6318, accuracy 0.477264
+EVAL: After epoch 7: step 28, loss 1.10902, acc 0.529255
+1.23.5
+
+Training epoch 8
+	 	Epoch 8:, loss 33.6594, accuracy 0.524617
+EVAL: After epoch 8: step 32, loss 1.31941, acc 0.484043
+1.23.5
+
+Training epoch 9
+	 	Epoch 9:, loss 37.1422, accuracy 0.490794
+EVAL: After epoch 9: step 36, loss 1.18263, acc 0.514628
+1.23.5
+
+Training epoch 10
+	 	Epoch 10:, loss 34.9194, accuracy 0.507606
+EVAL: After epoch 10: step 40, loss 1.20636, acc 0.485372
+1.23.5
+
+Training epoch 11
+	 	Epoch 11:, loss 35.2838, accuracy 0.500068
+EVAL: After epoch 11: step 44, loss 1.20748, acc 0.50266
+1.23.5
+
+Training epoch 12
+	 	Epoch 12:, loss 35.276, accuracy 0.47682
+EVAL: After epoch 12: step 48, loss 1.26487, acc 0.496011
+1.23.5
+
+Training epoch 13
+	 	Epoch 13:, loss 39.1083, accuracy 0.465998
+EVAL: After epoch 13: step 52, loss 1.22138, acc 0.482713
+1.23.5
+
+Training epoch 14
+	 	Epoch 14:, loss 34.6426, accuracy 0.51589
+EVAL: After epoch 14: step 56, loss 1.3313, acc 0.482713
+1.23.5
+
+Training epoch 15
+	 	Epoch 15:, loss 33.7318, accuracy 0.510774
+EVAL: After epoch 15: step 60, loss 1.17443, acc 0.50133
+1.23.5
+
+Training epoch 16
+	 	Epoch 16:, loss 36.1616, accuracy 0.523849
+EVAL: After epoch 16: step 64, loss 1.20314, acc 0.530585
+1.23.5
+
+Training epoch 17
+	 	Epoch 17:, loss 36.8009, accuracy 0.507042
+EVAL: After epoch 17: step 68, loss 1.19252, acc 0.49867
+1.23.5
+
+Training epoch 18
+	 	Epoch 18:, loss 40.5949, accuracy 0.488203
+EVAL: After epoch 18: step 72, loss 1.25699, acc 0.468085
+1.23.5
+
+Training epoch 19
+	 	Epoch 19:, loss 36.9532, accuracy 0.496076
+EVAL: After epoch 19: step 76, loss 1.33546, acc 0.474734
+1.23.5
+
+Training epoch 20
+	 	Epoch 20:, loss 35.1339, accuracy 0.511991
+EVAL: After epoch 20: step 80, loss 1.27116, acc 0.464096
+1.23.5
+
+Training epoch 21
+	 	Epoch 21:, loss 34.8715, accuracy 0.523613
+EVAL: After epoch 21: step 84, loss 1.2271, acc 0.493351
+1.23.5
+
+Training epoch 22
+	 	Epoch 22:, loss 38.2663, accuracy 0.505247
+EVAL: After epoch 22: step 88, loss 1.1784, acc 0.496011
+1.23.5
+
+Training epoch 23
+	 	Epoch 23:, loss 35.0469, accuracy 0.488285
+EVAL: After epoch 23: step 92, loss 1.04725, acc 0.549202
+1.23.5
+
+Training epoch 24
+	 	Epoch 24:, loss 34.3153, accuracy 0.510701
+EVAL: After epoch 24: step 96, loss 1.19977, acc 0.477394
+1.23.5
+
+Training epoch 25
+	 	Epoch 25:, loss 40.4997, accuracy 0.497123
+EVAL: After epoch 25: step 100, loss 1.1018, acc 0.530585
+1.23.5
+
+Training epoch 26
+	 	Epoch 26:, loss 37.5636, accuracy 0.475982
+EVAL: After epoch 26: step 104, loss 1.22832, acc 0.510638
+1.23.5
+
+Training epoch 27
+	 	Epoch 27:, loss 34.4186, accuracy 0.533757
+EVAL: After epoch 27: step 108, loss 1.24026, acc 0.473404
+1.23.5
+
+Training epoch 28
+	 	Epoch 28:, loss 38.6039, accuracy 0.484646
+EVAL: After epoch 28: step 112, loss 1.19975, acc 0.514628
+1.23.5
+
+Training epoch 29
+	 	Epoch 29:, loss 41.6391, accuracy 0.478023
+EVAL: After epoch 29: step 116, loss 1.16, acc 0.519947
+1.23.5
+
+Training epoch 30
+	 	Epoch 30:, loss 35.0594, accuracy 0.517555
+EVAL: After epoch 30: step 120, loss 1.11376, acc 0.506649
+1.23.5
+
+Training epoch 31
+	 	Epoch 31:, loss 33.7732, accuracy 0.536328
+EVAL: After epoch 31: step 124, loss 1.12116, acc 0.545213
+1.23.5
+
+Training epoch 32
+	 	Epoch 32:, loss 41.0537, accuracy 0.497125
+EVAL: After epoch 32: step 128, loss 1.201, acc 0.517287
+1.23.5
+
+Training epoch 33
+	 	Epoch 33:, loss 39.4818, accuracy 0.486188
+EVAL: After epoch 33: step 132, loss 1.24019, acc 0.513298
+1.23.5
+
+Training epoch 34
+	 	Epoch 34:, loss 34.5544, accuracy 0.522004
+EVAL: After epoch 34: step 136, loss 1.15194, acc 0.50266
+1.23.5
+
+Training epoch 35
+	 	Epoch 35:, loss 36.8969, accuracy 0.5208
+EVAL: After epoch 35: step 140, loss 1.25317, acc 0.484043
+1.23.5
+
+Training epoch 36
+	 	Epoch 36:, loss 41.0096, accuracy 0.496764
+EVAL: After epoch 36: step 144, loss 1.26751, acc 0.492021
+1.23.5
+
+Training epoch 37
+	 	Epoch 37:, loss 35.6111, accuracy 0.485531
+EVAL: After epoch 37: step 148, loss 1.22362, acc 0.526596
+1.23.5
+
+Training epoch 38
+	 	Epoch 38:, loss 33.3913, accuracy 0.550083
+EVAL: After epoch 38: step 152, loss 1.13358, acc 0.513298
+1.23.5
+
+Training epoch 39
+	 	Epoch 39:, loss 35.9725, accuracy 0.525624
+EVAL: After epoch 39: step 156, loss 1.05288, acc 0.549202
+1.23.5
+
+Training epoch 40
+	 	Epoch 40:, loss 36.9693, accuracy 0.494858
+EVAL: After epoch 40: step 160, loss 1.10877, acc 0.535904
+1.23.5
+
+Training epoch 41
+	 	Epoch 41:, loss 33.3569, accuracy 0.542144
+EVAL: After epoch 41: step 164, loss 1.24863, acc 0.509309
+1.23.5
+
+Training epoch 42
+	 	Epoch 42:, loss 42.0929, accuracy 0.48632
+EVAL: After epoch 42: step 168, loss 1.10447, acc 0.514628
+1.23.5
+
+Training epoch 43
+	 	Epoch 43:, loss 35.7025, accuracy 0.533763
+EVAL: After epoch 43: step 172, loss 1.27841, acc 0.474734
+1.23.5
+
+Training epoch 44
+	 	Epoch 44:, loss 39.1279, accuracy 0.48073
+EVAL: After epoch 44: step 176, loss 1.0849, acc 0.521277
+1.23.5
+
+Training epoch 45
+	 	Epoch 45:, loss 33.7845, accuracy 0.502538
+EVAL: After epoch 45: step 180, loss 1.17165, acc 0.529255
+1.23.5
+
+Training epoch 46
+	 	Epoch 46:, loss nan, accuracy 0.507406
+EVAL: After epoch 46: step 184, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 47
+	 	Epoch 47:, loss nan, accuracy 0.472144
+EVAL: After epoch 47: step 188, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 48
+	 	Epoch 48:, loss nan, accuracy 0.492024
+EVAL: After epoch 48: step 192, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 49
+	 	Epoch 49:, loss nan, accuracy 0.501452
+EVAL: After epoch 49: step 196, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 50
+	 	Epoch 50:, loss nan, accuracy 0.497145
+EVAL: After epoch 50: step 200, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 51
+	 	Epoch 51:, loss nan, accuracy 0.527209
+EVAL: After epoch 51: step 204, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 52
+	 	Epoch 52:, loss nan, accuracy 0.562868
+EVAL: After epoch 52: step 208, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 53
+	 	Epoch 53:, loss nan, accuracy 0.514466
+EVAL: After epoch 53: step 212, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 54
+	 	Epoch 54:, loss nan, accuracy 0.549383
+EVAL: After epoch 54: step 216, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 55
+	 	Epoch 55:, loss nan, accuracy 0.517843
+EVAL: After epoch 55: step 220, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 56
+	 	Epoch 56:, loss nan, accuracy 0.539981
+EVAL: After epoch 56: step 224, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 57
+	 	Epoch 57:, loss nan, accuracy 0.419557
+EVAL: After epoch 57: step 228, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 58
+	 	Epoch 58:, loss nan, accuracy 0.559197
+EVAL: After epoch 58: step 232, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 59
+	 	Epoch 59:, loss nan, accuracy 0.471272
+EVAL: After epoch 59: step 236, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 60
+	 	Epoch 60:, loss nan, accuracy 0.468457
+EVAL: After epoch 60: step 240, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 61
+	 	Epoch 61:, loss nan, accuracy 0.515522
+EVAL: After epoch 61: step 244, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 62
+	 	Epoch 62:, loss nan, accuracy 0.540387
+EVAL: After epoch 62: step 248, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 63
+	 	Epoch 63:, loss nan, accuracy 0.488557
+EVAL: After epoch 63: step 252, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 64
+	 	Epoch 64:, loss nan, accuracy 0.529715
+EVAL: After epoch 64: step 256, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 65
+	 	Epoch 65:, loss nan, accuracy 0.50562
+EVAL: After epoch 65: step 260, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 66
+	 	Epoch 66:, loss nan, accuracy 0.413875
+EVAL: After epoch 66: step 264, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 67
+	 	Epoch 67:, loss nan, accuracy 0.50737
+EVAL: After epoch 67: step 268, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 68
+	 	Epoch 68:, loss nan, accuracy 0.552785
+EVAL: After epoch 68: step 272, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 69
+	 	Epoch 69:, loss nan, accuracy 0.47242
+EVAL: After epoch 69: step 276, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 70
+	 	Epoch 70:, loss nan, accuracy 0.526982
+EVAL: After epoch 70: step 280, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 71
+	 	Epoch 71:, loss nan, accuracy 0.488217
+EVAL: After epoch 71: step 284, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 72
+	 	Epoch 72:, loss nan, accuracy 0.527496
+EVAL: After epoch 72: step 288, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 73
+	 	Epoch 73:, loss nan, accuracy 0.559
+EVAL: After epoch 73: step 292, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 74
+	 	Epoch 74:, loss nan, accuracy 0.544115
+EVAL: After epoch 74: step 296, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 75
+	 	Epoch 75:, loss nan, accuracy 0.532769
+EVAL: After epoch 75: step 300, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 76
+	 	Epoch 76:, loss nan, accuracy 0.52585
+EVAL: After epoch 76: step 304, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 77
+	 	Epoch 77:, loss nan, accuracy 0.426897
+EVAL: After epoch 77: step 308, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 78
+	 	Epoch 78:, loss nan, accuracy 0.494116
+EVAL: After epoch 78: step 312, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 79
+	 	Epoch 79:, loss nan, accuracy 0.468895
+EVAL: After epoch 79: step 316, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 80
+	 	Epoch 80:, loss nan, accuracy 0.456115
+EVAL: After epoch 80: step 320, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 81
+	 	Epoch 81:, loss nan, accuracy 0.458633
+EVAL: After epoch 81: step 324, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 82
+	 	Epoch 82:, loss nan, accuracy 0.539423
+EVAL: After epoch 82: step 328, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 83
+	 	Epoch 83:, loss nan, accuracy 0.476121
+EVAL: After epoch 83: step 332, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 84
+	 	Epoch 84:, loss nan, accuracy 0.464895
+EVAL: After epoch 84: step 336, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 85
+	 	Epoch 85:, loss nan, accuracy 0.586487
+EVAL: After epoch 85: step 340, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 86
+	 	Epoch 86:, loss nan, accuracy 0.469969
+EVAL: After epoch 86: step 344, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 87
+	 	Epoch 87:, loss nan, accuracy 0.504203
+EVAL: After epoch 87: step 348, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 88
+	 	Epoch 88:, loss nan, accuracy 0.532711
+EVAL: After epoch 88: step 352, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 89
+	 	Epoch 89:, loss nan, accuracy 0.447674
+EVAL: After epoch 89: step 356, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 90
+	 	Epoch 90:, loss nan, accuracy 0.518105
+EVAL: After epoch 90: step 360, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 91
+	 	Epoch 91:, loss nan, accuracy 0.548436
+EVAL: After epoch 91: step 364, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 92
+	 	Epoch 92:, loss nan, accuracy 0.513641
+EVAL: After epoch 92: step 368, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 93
+	 	Epoch 93:, loss nan, accuracy 0.490111
+EVAL: After epoch 93: step 372, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 94
+	 	Epoch 94:, loss nan, accuracy 0.53416
+EVAL: After epoch 94: step 376, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 95
+	 	Epoch 95:, loss nan, accuracy 0.515641
+EVAL: After epoch 95: step 380, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 96
+	 	Epoch 96:, loss nan, accuracy 0.491274
+EVAL: After epoch 96: step 384, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 97
+	 	Epoch 97:, loss nan, accuracy 0.467063
+EVAL: After epoch 97: step 388, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 98
+	 	Epoch 98:, loss nan, accuracy 0.508616
+EVAL: After epoch 98: step 392, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 99
+	 	Epoch 99:, loss nan, accuracy 0.477491
+EVAL: After epoch 99: step 396, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 100
+	 	Epoch 100:, loss nan, accuracy 0.485255
+EVAL: After epoch 100: step 400, loss nan, acc 0.378989
+
+
+Best epoch: 23
+Best test accuracy: 0.5492021441459656
+
+
+Best epoch: 23
+Best test loss: 1.0472489633867819
+('starting unimodal ', 'audio', 'mosi')
+train_mask (62, 63)
+seqlen_train (62,)
+seqlen_test (31,)
+Using GPU -  /device:GPU:0
+Trainable parameters: 72502
+
+Evaluation before training:
+EVAL: epoch 0: step 0, loss 34.2409, acc 0.513298
+1.23.5
+
+Training epoch 1
+	 	Epoch 1:, loss 35.1854, accuracy 0.520746
+EVAL: After epoch 1: step 4, loss 1.17578, acc 0.511968
+1.23.5
+
+Training epoch 2
+	 	Epoch 2:, loss 35.3017, accuracy 0.504874
+EVAL: After epoch 2: step 8, loss 1.15069, acc 0.494681
+1.23.5
+
+Training epoch 3
+	 	Epoch 3:, loss 34.0337, accuracy 0.509227
+EVAL: After epoch 3: step 12, loss 1.2922, acc 0.517287
+1.23.5
+
+Training epoch 4
+	 	Epoch 4:, loss 38.3819, accuracy 0.489637
+EVAL: After epoch 4: step 16, loss 1.35493, acc 0.486702
+1.23.5
+
+Training epoch 5
+	 	Epoch 5:, loss 44.0471, accuracy 0.456686
+EVAL: After epoch 5: step 20, loss 1.31728, acc 0.473404
+1.23.5
+
+Training epoch 6
+	 	Epoch 6:, loss 36.5166, accuracy 0.491431
+EVAL: After epoch 6: step 24, loss 1.22857, acc 0.49734
+1.23.5
+
+Training epoch 7
+	 	Epoch 7:, loss 37.3192, accuracy 0.499485
+EVAL: After epoch 7: step 28, loss 1.11759, acc 0.527926
+1.23.5
+
+Training epoch 8
+	 	Epoch 8:, loss 37.1469, accuracy 0.500238
+EVAL: After epoch 8: step 32, loss 1.32949, acc 0.476064
+1.23.5
+
+Training epoch 9
+	 	Epoch 9:, loss 39.2007, accuracy 0.473484
+EVAL: After epoch 9: step 36, loss 1.19301, acc 0.510638
+1.23.5
+
+Training epoch 10
+	 	Epoch 10:, loss 33.286, accuracy 0.490359
+EVAL: After epoch 10: step 40, loss 1.21726, acc 0.478723
+1.23.5
+
+Training epoch 11
+	 	Epoch 11:, loss 35.7846, accuracy 0.482268
+EVAL: After epoch 11: step 44, loss 1.21727, acc 0.50266
+1.23.5
+
+Training epoch 12
+	 	Epoch 12:, loss 34.7921, accuracy 0.501055
+EVAL: After epoch 12: step 48, loss 1.27619, acc 0.489362
+1.23.5
+
+Training epoch 13
+	 	Epoch 13:, loss 38.4969, accuracy 0.482182
+EVAL: After epoch 13: step 52, loss 1.23271, acc 0.478723
+1.23.5
+
+Training epoch 14
+	 	Epoch 14:, loss 37.6112, accuracy 0.472149
+EVAL: After epoch 14: step 56, loss 1.34313, acc 0.478723
+1.23.5
+
+Training epoch 15
+	 	Epoch 15:, loss 33.9763, accuracy 0.496891
+EVAL: After epoch 15: step 60, loss 1.18458, acc 0.49734
+1.23.5
+
+Training epoch 16
+	 	Epoch 16:, loss 38.0008, accuracy 0.503996
+EVAL: After epoch 16: step 64, loss 1.21363, acc 0.526596
+1.23.5
+
+Training epoch 17
+	 	Epoch 17:, loss 34.7411, accuracy 0.516514
+EVAL: After epoch 17: step 68, loss 1.20263, acc 0.494681
+1.23.5
+
+Training epoch 18
+	 	Epoch 18:, loss 43.341, accuracy 0.477112
+EVAL: After epoch 18: step 72, loss 1.26852, acc 0.462766
+1.23.5
+
+Training epoch 19
+	 	Epoch 19:, loss 35.1677, accuracy 0.523859
+EVAL: After epoch 19: step 76, loss 1.34663, acc 0.470745
+1.23.5
+
+Training epoch 20
+	 	Epoch 20:, loss 36.5424, accuracy 0.492994
+EVAL: After epoch 20: step 80, loss 1.2833, acc 0.460106
+1.23.5
+
+Training epoch 21
+	 	Epoch 21:, loss 38.1205, accuracy 0.497456
+EVAL: After epoch 21: step 84, loss 1.23766, acc 0.486702
+1.23.5
+
+Training epoch 22
+	 	Epoch 22:, loss 35.4954, accuracy 0.51237
+EVAL: After epoch 22: step 88, loss 1.19061, acc 0.492021
+1.23.5
+
+Training epoch 23
+	 	Epoch 23:, loss 34.8202, accuracy 0.512634
+EVAL: After epoch 23: step 92, loss 1.05827, acc 0.543883
+1.23.5
+
+Training epoch 24
+	 	Epoch 24:, loss 35.7303, accuracy 0.516734
+EVAL: After epoch 24: step 96, loss 1.2115, acc 0.473404
+1.23.5
+
+Training epoch 25
+	 	Epoch 25:, loss 36.4151, accuracy 0.503017
+EVAL: After epoch 25: step 100, loss 1.11186, acc 0.530585
+1.23.5
+
+Training epoch 26
+	 	Epoch 26:, loss 34.6642, accuracy 0.521528
+EVAL: After epoch 26: step 104, loss 1.23857, acc 0.503989
+1.23.5
+
+Training epoch 27
+	 	Epoch 27:, loss 36.8149, accuracy 0.501125
+EVAL: After epoch 27: step 108, loss 1.25184, acc 0.469415
+1.23.5
+
+Training epoch 28
+	 	Epoch 28:, loss 37.9075, accuracy 0.489649
+EVAL: After epoch 28: step 112, loss 1.21125, acc 0.510638
+1.23.5
+
+Training epoch 29
+	 	Epoch 29:, loss 37.6452, accuracy 0.502783
+EVAL: After epoch 29: step 116, loss 1.17166, acc 0.513298
+1.23.5
+
+Training epoch 30
+	 	Epoch 30:, loss 38.521, accuracy 0.487246
+EVAL: After epoch 30: step 120, loss 1.12481, acc 0.50133
+1.23.5
+
+Training epoch 31
+	 	Epoch 31:, loss 31.4426, accuracy 0.543132
+EVAL: After epoch 31: step 124, loss 1.13169, acc 0.541223
+1.23.5
+
+Training epoch 32
+	 	Epoch 32:, loss 39.8593, accuracy 0.480055
+EVAL: After epoch 32: step 128, loss 1.21208, acc 0.517287
+1.23.5
+
+Training epoch 33
+	 	Epoch 33:, loss 38.6426, accuracy 0.498206
+EVAL: After epoch 33: step 132, loss 1.25117, acc 0.509309
+1.23.5
+
+Training epoch 34
+	 	Epoch 34:, loss 38.6017, accuracy 0.492888
+EVAL: After epoch 34: step 136, loss 1.16337, acc 0.5
+1.23.5
+
+Training epoch 35
+	 	Epoch 35:, loss 40.2219, accuracy 0.495987
+EVAL: After epoch 35: step 140, loss 1.26489, acc 0.478723
+1.23.5
+
+Training epoch 36
+	 	Epoch 36:, loss 39.7049, accuracy 0.487377
+EVAL: After epoch 36: step 144, loss 1.27767, acc 0.490691
+1.23.5
+
+Training epoch 37
+	 	Epoch 37:, loss 37.7734, accuracy 0.487743
+EVAL: After epoch 37: step 148, loss 1.23385, acc 0.526596
+1.23.5
+
+Training epoch 38
+	 	Epoch 38:, loss 35.2822, accuracy 0.511927
+EVAL: After epoch 38: step 152, loss 1.14463, acc 0.513298
+1.23.5
+
+Training epoch 39
+	 	Epoch 39:, loss 34.788, accuracy 0.506694
+EVAL: After epoch 39: step 156, loss 1.06355, acc 0.549202
+1.23.5
+
+Training epoch 40
+	 	Epoch 40:, loss 37.0056, accuracy 0.490514
+EVAL: After epoch 40: step 160, loss 1.11873, acc 0.535904
+1.23.5
+
+Training epoch 41
+	 	Epoch 41:, loss 39.2743, accuracy 0.519181
+EVAL: After epoch 41: step 164, loss 1.25993, acc 0.507979
+1.23.5
+
+Training epoch 42
+	 	Epoch 42:, loss 41.8867, accuracy 0.477322
+EVAL: After epoch 42: step 168, loss 1.11757, acc 0.509309
+1.23.5
+
+Training epoch 43
+	 	Epoch 43:, loss 39.5936, accuracy 0.470037
+EVAL: After epoch 43: step 172, loss 1.29119, acc 0.472074
+1.23.5
+
+Training epoch 44
+	 	Epoch 44:, loss 39.745, accuracy 0.503569
+EVAL: After epoch 44: step 176, loss 1.09685, acc 0.518617
+1.23.5
+
+Training epoch 45
+	 	Epoch 45:, loss 34.3864, accuracy 0.532801
+EVAL: After epoch 45: step 180, loss 1.1822, acc 0.525266
+1.23.5
+
+Training epoch 46
+	 	Epoch 46:, loss nan, accuracy 0.575869
+EVAL: After epoch 46: step 184, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 47
+	 	Epoch 47:, loss nan, accuracy 0.484306
+EVAL: After epoch 47: step 188, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 48
+	 	Epoch 48:, loss nan, accuracy 0.479389
+EVAL: After epoch 48: step 192, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 49
+	 	Epoch 49:, loss nan, accuracy 0.536537
+EVAL: After epoch 49: step 196, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 50
+	 	Epoch 50:, loss nan, accuracy 0.480126
+EVAL: After epoch 50: step 200, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 51
+	 	Epoch 51:, loss nan, accuracy 0.437885
+EVAL: After epoch 51: step 204, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 52
+	 	Epoch 52:, loss nan, accuracy 0.447186
+EVAL: After epoch 52: step 208, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 53
+	 	Epoch 53:, loss nan, accuracy 0.535194
+EVAL: After epoch 53: step 212, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 54
+	 	Epoch 54:, loss nan, accuracy 0.529952
+EVAL: After epoch 54: step 216, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 55
+	 	Epoch 55:, loss nan, accuracy 0.462301
+EVAL: After epoch 55: step 220, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 56
+	 	Epoch 56:, loss nan, accuracy 0.511088
+EVAL: After epoch 56: step 224, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 57
+	 	Epoch 57:, loss nan, accuracy 0.436309
+EVAL: After epoch 57: step 228, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 58
+	 	Epoch 58:, loss nan, accuracy 0.498587
+EVAL: After epoch 58: step 232, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 59
+	 	Epoch 59:, loss nan, accuracy 0.569744
+EVAL: After epoch 59: step 236, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 60
+	 	Epoch 60:, loss nan, accuracy 0.442521
+EVAL: After epoch 60: step 240, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 61
+	 	Epoch 61:, loss nan, accuracy 0.473085
+EVAL: After epoch 61: step 244, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 62
+	 	Epoch 62:, loss nan, accuracy 0.542682
+EVAL: After epoch 62: step 248, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 63
+	 	Epoch 63:, loss nan, accuracy 0.514935
+EVAL: After epoch 63: step 252, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 64
+	 	Epoch 64:, loss nan, accuracy 0.585419
+EVAL: After epoch 64: step 256, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 65
+	 	Epoch 65:, loss nan, accuracy 0.494372
+EVAL: After epoch 65: step 260, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 66
+	 	Epoch 66:, loss nan, accuracy 0.479832
+EVAL: After epoch 66: step 264, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 67
+	 	Epoch 67:, loss nan, accuracy 0.525867
+EVAL: After epoch 67: step 268, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 68
+	 	Epoch 68:, loss nan, accuracy 0.493933
+EVAL: After epoch 68: step 272, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 69
+	 	Epoch 69:, loss nan, accuracy 0.551038
+EVAL: After epoch 69: step 276, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 70
+	 	Epoch 70:, loss nan, accuracy 0.451162
+EVAL: After epoch 70: step 280, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 71
+	 	Epoch 71:, loss nan, accuracy 0.481777
+EVAL: After epoch 71: step 284, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 72
+	 	Epoch 72:, loss nan, accuracy 0.505428
+EVAL: After epoch 72: step 288, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 73
+	 	Epoch 73:, loss nan, accuracy 0.481656
+EVAL: After epoch 73: step 292, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 74
+	 	Epoch 74:, loss nan, accuracy 0.493557
+EVAL: After epoch 74: step 296, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 75
+	 	Epoch 75:, loss nan, accuracy 0.448241
+EVAL: After epoch 75: step 300, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 76
+	 	Epoch 76:, loss nan, accuracy 0.481785
+EVAL: After epoch 76: step 304, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 77
+	 	Epoch 77:, loss nan, accuracy 0.448819
+EVAL: After epoch 77: step 308, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 78
+	 	Epoch 78:, loss nan, accuracy 0.533197
+EVAL: After epoch 78: step 312, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 79
+	 	Epoch 79:, loss nan, accuracy 0.450187
+EVAL: After epoch 79: step 316, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 80
+	 	Epoch 80:, loss nan, accuracy 0.512858
+EVAL: After epoch 80: step 320, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 81
+	 	Epoch 81:, loss nan, accuracy 0.493018
+EVAL: After epoch 81: step 324, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 82
+	 	Epoch 82:, loss nan, accuracy 0.564646
+EVAL: After epoch 82: step 328, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 83
+	 	Epoch 83:, loss nan, accuracy 0.591946
+EVAL: After epoch 83: step 332, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 84
+	 	Epoch 84:, loss nan, accuracy 0.496159
+EVAL: After epoch 84: step 336, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 85
+	 	Epoch 85:, loss nan, accuracy 0.496962
+EVAL: After epoch 85: step 340, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 86
+	 	Epoch 86:, loss nan, accuracy 0.484559
+EVAL: After epoch 86: step 344, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 87
+	 	Epoch 87:, loss nan, accuracy 0.489835
+EVAL: After epoch 87: step 348, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 88
+	 	Epoch 88:, loss nan, accuracy 0.475112
+EVAL: After epoch 88: step 352, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 89
+	 	Epoch 89:, loss nan, accuracy 0.482913
+EVAL: After epoch 89: step 356, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 90
+	 	Epoch 90:, loss nan, accuracy 0.475238
+EVAL: After epoch 90: step 360, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 91
+	 	Epoch 91:, loss nan, accuracy 0.546555
+EVAL: After epoch 91: step 364, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 92
+	 	Epoch 92:, loss nan, accuracy 0.501679
+EVAL: After epoch 92: step 368, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 93
+	 	Epoch 93:, loss nan, accuracy 0.571784
+EVAL: After epoch 93: step 372, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 94
+	 	Epoch 94:, loss nan, accuracy 0.457608
+EVAL: After epoch 94: step 376, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 95
+	 	Epoch 95:, loss nan, accuracy 0.452657
+EVAL: After epoch 95: step 380, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 96
+	 	Epoch 96:, loss nan, accuracy 0.507324
+EVAL: After epoch 96: step 384, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 97
+	 	Epoch 97:, loss nan, accuracy 0.535162
+EVAL: After epoch 97: step 388, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 98
+	 	Epoch 98:, loss nan, accuracy 0.466625
+EVAL: After epoch 98: step 392, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 99
+	 	Epoch 99:, loss nan, accuracy 0.462046
+EVAL: After epoch 99: step 396, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 100
+	 	Epoch 100:, loss nan, accuracy 0.525601
+EVAL: After epoch 100: step 400, loss nan, acc 0.378989
+
+
+Best epoch: 39
+Best test accuracy: 0.5492021441459656
+
+
+Best epoch: 23
+Best test loss: 1.0582702390609249
+('starting unimodal ', 'video', 'mosi')
+train_mask (62, 63)
+seqlen_train (62,)
+seqlen_test (31,)
+Using GPU -  /device:GPU:0
+Trainable parameters: 80602
+
+Evaluation before training:
+EVAL: epoch 0: step 0, loss 34.1744, acc 0.511968
+1.23.5
+
+Training epoch 1
+	 	Epoch 1:, loss 40.7482, accuracy 0.482444
+EVAL: After epoch 1: step 4, loss 1.1734, acc 0.511968
+1.23.5
+
+Training epoch 2
+	 	Epoch 2:, loss 36.6567, accuracy 0.45568
+EVAL: After epoch 2: step 8, loss 1.14797, acc 0.496011
+1.23.5
+
+Training epoch 3
+	 	Epoch 3:, loss 34.7159, accuracy 0.500652
+EVAL: After epoch 3: step 12, loss 1.2889, acc 0.517287
+1.23.5
+
+Training epoch 4
+	 	Epoch 4:, loss 40.6178, accuracy 0.491022
+EVAL: After epoch 4: step 16, loss 1.35065, acc 0.489362
+1.23.5
+
+Training epoch 5
+	 	Epoch 5:, loss 39.8178, accuracy 0.511438
+EVAL: After epoch 5: step 20, loss 1.31418, acc 0.476064
+1.23.5
+
+Training epoch 6
+	 	Epoch 6:, loss 38.3298, accuracy 0.511426
+EVAL: After epoch 6: step 24, loss 1.22477, acc 0.49867
+1.23.5
+
+Training epoch 7
+	 	Epoch 7:, loss 38.4913, accuracy 0.480112
+EVAL: After epoch 7: step 28, loss 1.11357, acc 0.526596
+1.23.5
+
+Training epoch 8
+	 	Epoch 8:, loss 42.9084, accuracy 0.455716
+EVAL: After epoch 8: step 32, loss 1.32509, acc 0.480053
+1.23.5
+
+Training epoch 9
+	 	Epoch 9:, loss 37.981, accuracy 0.483269
+EVAL: After epoch 9: step 36, loss 1.18868, acc 0.513298
+1.23.5
+
+Training epoch 10
+	 	Epoch 10:, loss 36.8501, accuracy 0.491899
+EVAL: After epoch 10: step 40, loss 1.21207, acc 0.480053
+1.23.5
+
+Training epoch 11
+	 	Epoch 11:, loss 35.9241, accuracy 0.481528
+EVAL: After epoch 11: step 44, loss 1.21331, acc 0.50266
+1.23.5
+
+Training epoch 12
+	 	Epoch 12:, loss 35.7655, accuracy 0.485485
+EVAL: After epoch 12: step 48, loss 1.27095, acc 0.489362
+1.23.5
+
+Training epoch 13
+	 	Epoch 13:, loss 37.9231, accuracy 0.506967
+EVAL: After epoch 13: step 52, loss 1.22916, acc 0.478723
+1.23.5
+
+Training epoch 14
+	 	Epoch 14:, loss 36.756, accuracy 0.488686
+EVAL: After epoch 14: step 56, loss 1.33701, acc 0.478723
+1.23.5
+
+Training epoch 15
+	 	Epoch 15:, loss 37.7328, accuracy 0.449277
+EVAL: After epoch 15: step 60, loss 1.17982, acc 0.496011
+1.23.5
+
+Training epoch 16
+	 	Epoch 16:, loss 36.9555, accuracy 0.504512
+EVAL: After epoch 16: step 64, loss 1.20898, acc 0.529255
+1.23.5
+
+Training epoch 17
+	 	Epoch 17:, loss 34.5914, accuracy 0.513011
+EVAL: After epoch 17: step 68, loss 1.19828, acc 0.496011
+1.23.5
+
+Training epoch 18
+	 	Epoch 18:, loss 40.0647, accuracy 0.504454
+EVAL: After epoch 18: step 72, loss 1.26314, acc 0.465426
+1.23.5
+
+Training epoch 19
+	 	Epoch 19:, loss 38.5124, accuracy 0.522872
+EVAL: After epoch 19: step 76, loss 1.34217, acc 0.473404
+1.23.5
+
+Training epoch 20
+	 	Epoch 20:, loss 40.9647, accuracy 0.452883
+EVAL: After epoch 20: step 80, loss 1.27768, acc 0.462766
+1.23.5
+
+Training epoch 21
+	 	Epoch 21:, loss 39.1438, accuracy 0.505845
+EVAL: After epoch 21: step 84, loss 1.23347, acc 0.489362
+1.23.5
+
+Training epoch 22
+	 	Epoch 22:, loss 35.4988, accuracy 0.512682
+EVAL: After epoch 22: step 88, loss 1.18546, acc 0.496011
+1.23.5
+
+Training epoch 23
+	 	Epoch 23:, loss 38.9758, accuracy 0.487482
+EVAL: After epoch 23: step 92, loss 1.05336, acc 0.546543
+1.23.5
+
+Training epoch 24
+	 	Epoch 24:, loss 32.5129, accuracy 0.527708
+EVAL: After epoch 24: step 96, loss 1.20594, acc 0.474734
+1.23.5
+
+Training epoch 25
+	 	Epoch 25:, loss 39.0613, accuracy 0.490463
+EVAL: After epoch 25: step 100, loss 1.1082, acc 0.530585
+1.23.5
+
+Training epoch 26
+	 	Epoch 26:, loss 34.6658, accuracy 0.506838
+EVAL: After epoch 26: step 104, loss 1.23472, acc 0.503989
+1.23.5
+
+Training epoch 27
+	 	Epoch 27:, loss 36.0224, accuracy 0.499517
+EVAL: After epoch 27: step 108, loss 1.24678, acc 0.469415
+1.23.5
+
+Training epoch 28
+	 	Epoch 28:, loss 38.3481, accuracy 0.495724
+EVAL: After epoch 28: step 112, loss 1.20714, acc 0.513298
+1.23.5
+
+Training epoch 29
+	 	Epoch 29:, loss 38.2048, accuracy 0.494843
+EVAL: After epoch 29: step 116, loss 1.16722, acc 0.521277
+1.23.5
+
+Training epoch 30
+	 	Epoch 30:, loss 39.7886, accuracy 0.49153
+EVAL: After epoch 30: step 120, loss 1.11995, acc 0.507979
+1.23.5
+
+Training epoch 31
+	 	Epoch 31:, loss 37.6762, accuracy 0.48569
+EVAL: After epoch 31: step 124, loss 1.12755, acc 0.541223
+1.23.5
+
+Training epoch 32
+	 	Epoch 32:, loss 39.4938, accuracy 0.496349
+EVAL: After epoch 32: step 128, loss 1.20771, acc 0.517287
+1.23.5
+
+Training epoch 33
+	 	Epoch 33:, loss 37.3092, accuracy 0.510163
+EVAL: After epoch 33: step 132, loss 1.24688, acc 0.513298
+1.23.5
+
+Training epoch 34
+	 	Epoch 34:, loss 35.419, accuracy 0.512752
+EVAL: After epoch 34: step 136, loss 1.1582, acc 0.50133
+1.23.5
+
+Training epoch 35
+	 	Epoch 35:, loss 35.4031, accuracy 0.544093
+EVAL: After epoch 35: step 140, loss 1.25948, acc 0.477394
+1.23.5
+
+Training epoch 36
+	 	Epoch 36:, loss 36.6738, accuracy 0.513391
+EVAL: After epoch 36: step 144, loss 1.27346, acc 0.492021
+1.23.5
+
+Training epoch 37
+	 	Epoch 37:, loss 37.7248, accuracy 0.463412
+EVAL: After epoch 37: step 148, loss 1.22871, acc 0.527926
+1.23.5
+
+Training epoch 38
+	 	Epoch 38:, loss 36.0034, accuracy 0.509399
+EVAL: After epoch 38: step 152, loss 1.14031, acc 0.513298
+1.23.5
+
+Training epoch 39
+	 	Epoch 39:, loss 35.9188, accuracy 0.492039
+EVAL: After epoch 39: step 156, loss 1.05839, acc 0.549202
+1.23.5
+
+Training epoch 40
+	 	Epoch 40:, loss 34.4039, accuracy 0.493187
+EVAL: After epoch 40: step 160, loss 1.11515, acc 0.534574
+1.23.5
+
+Training epoch 41
+	 	Epoch 41:, loss 38.2428, accuracy 0.469494
+EVAL: After epoch 41: step 164, loss 1.25543, acc 0.507979
+1.23.5
+
+Training epoch 42
+	 	Epoch 42:, loss 43.7509, accuracy 0.489863
+EVAL: After epoch 42: step 168, loss 1.1124, acc 0.513298
+1.23.5
+
+Training epoch 43
+	 	Epoch 43:, loss 39.2162, accuracy 0.493133
+EVAL: After epoch 43: step 172, loss 1.28609, acc 0.472074
+1.23.5
+
+Training epoch 44
+	 	Epoch 44:, loss 38.5667, accuracy 0.489352
+EVAL: After epoch 44: step 176, loss 1.09226, acc 0.519947
+1.23.5
+
+Training epoch 45
+	 	Epoch 45:, loss 37.3332, accuracy 0.489017
+EVAL: After epoch 45: step 180, loss 1.1779, acc 0.526596
+1.23.5
+
+Training epoch 46
+	 	Epoch 46:, loss nan, accuracy 0.5758
+EVAL: After epoch 46: step 184, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 47
+	 	Epoch 47:, loss nan, accuracy 0.516015
+EVAL: After epoch 47: step 188, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 48
+	 	Epoch 48:, loss nan, accuracy 0.566813
+EVAL: After epoch 48: step 192, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 49
+	 	Epoch 49:, loss nan, accuracy 0.539895
+EVAL: After epoch 49: step 196, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 50
+	 	Epoch 50:, loss nan, accuracy 0.548965
+EVAL: After epoch 50: step 200, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 51
+	 	Epoch 51:, loss nan, accuracy 0.584763
+EVAL: After epoch 51: step 204, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 52
+	 	Epoch 52:, loss nan, accuracy 0.484329
+EVAL: After epoch 52: step 208, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 53
+	 	Epoch 53:, loss nan, accuracy 0.514093
+EVAL: After epoch 53: step 212, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 54
+	 	Epoch 54:, loss nan, accuracy 0.488381
+EVAL: After epoch 54: step 216, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 55
+	 	Epoch 55:, loss nan, accuracy 0.562258
+EVAL: After epoch 55: step 220, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 56
+	 	Epoch 56:, loss nan, accuracy 0.499039
+EVAL: After epoch 56: step 224, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 57
+	 	Epoch 57:, loss nan, accuracy 0.534442
+EVAL: After epoch 57: step 228, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 58
+	 	Epoch 58:, loss nan, accuracy 0.527036
+EVAL: After epoch 58: step 232, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 59
+	 	Epoch 59:, loss nan, accuracy 0.518394
+EVAL: After epoch 59: step 236, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 60
+	 	Epoch 60:, loss nan, accuracy 0.50707
+EVAL: After epoch 60: step 240, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 61
+	 	Epoch 61:, loss nan, accuracy 0.541829
+EVAL: After epoch 61: step 244, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 62
+	 	Epoch 62:, loss nan, accuracy 0.498457
+EVAL: After epoch 62: step 248, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 63
+	 	Epoch 63:, loss nan, accuracy 0.515362
+EVAL: After epoch 63: step 252, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 64
+	 	Epoch 64:, loss nan, accuracy 0.537306
+EVAL: After epoch 64: step 256, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 65
+	 	Epoch 65:, loss nan, accuracy 0.460865
+EVAL: After epoch 65: step 260, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 66
+	 	Epoch 66:, loss nan, accuracy 0.503923
+EVAL: After epoch 66: step 264, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 67
+	 	Epoch 67:, loss nan, accuracy 0.512695
+EVAL: After epoch 67: step 268, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 68
+	 	Epoch 68:, loss nan, accuracy 0.565535
+EVAL: After epoch 68: step 272, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 69
+	 	Epoch 69:, loss nan, accuracy 0.521276
+EVAL: After epoch 69: step 276, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 70
+	 	Epoch 70:, loss nan, accuracy 0.463766
+EVAL: After epoch 70: step 280, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 71
+	 	Epoch 71:, loss nan, accuracy 0.528091
+EVAL: After epoch 71: step 284, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 72
+	 	Epoch 72:, loss nan, accuracy 0.501358
+EVAL: After epoch 72: step 288, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 73
+	 	Epoch 73:, loss nan, accuracy 0.566807
+EVAL: After epoch 73: step 292, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 74
+	 	Epoch 74:, loss nan, accuracy 0.501322
+EVAL: After epoch 74: step 296, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 75
+	 	Epoch 75:, loss nan, accuracy 0.491662
+EVAL: After epoch 75: step 300, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 76
+	 	Epoch 76:, loss nan, accuracy 0.483519
+EVAL: After epoch 76: step 304, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 77
+	 	Epoch 77:, loss nan, accuracy 0.472989
+EVAL: After epoch 77: step 308, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 78
+	 	Epoch 78:, loss nan, accuracy 0.529563
+EVAL: After epoch 78: step 312, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 79
+	 	Epoch 79:, loss nan, accuracy 0.507957
+EVAL: After epoch 79: step 316, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 80
+	 	Epoch 80:, loss nan, accuracy 0.523733
+EVAL: After epoch 80: step 320, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 81
+	 	Epoch 81:, loss nan, accuracy 0.5099
+EVAL: After epoch 81: step 324, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 82
+	 	Epoch 82:, loss nan, accuracy 0.533455
+EVAL: After epoch 82: step 328, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 83
+	 	Epoch 83:, loss nan, accuracy 0.473081
+EVAL: After epoch 83: step 332, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 84
+	 	Epoch 84:, loss nan, accuracy 0.463414
+EVAL: After epoch 84: step 336, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 85
+	 	Epoch 85:, loss nan, accuracy 0.522732
+EVAL: After epoch 85: step 340, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 86
+	 	Epoch 86:, loss nan, accuracy 0.492913
+EVAL: After epoch 86: step 344, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 87
+	 	Epoch 87:, loss nan, accuracy 0.490474
+EVAL: After epoch 87: step 348, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 88
+	 	Epoch 88:, loss nan, accuracy 0.488841
+EVAL: After epoch 88: step 352, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 89
+	 	Epoch 89:, loss nan, accuracy 0.497386
+EVAL: After epoch 89: step 356, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 90
+	 	Epoch 90:, loss nan, accuracy 0.516888
+EVAL: After epoch 90: step 360, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 91
+	 	Epoch 91:, loss nan, accuracy 0.527209
+EVAL: After epoch 91: step 364, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 92
+	 	Epoch 92:, loss nan, accuracy 0.503924
+EVAL: After epoch 92: step 368, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 93
+	 	Epoch 93:, loss nan, accuracy 0.529499
+EVAL: After epoch 93: step 372, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 94
+	 	Epoch 94:, loss nan, accuracy 0.481323
+EVAL: After epoch 94: step 376, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 95
+	 	Epoch 95:, loss nan, accuracy 0.47679
+EVAL: After epoch 95: step 380, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 96
+	 	Epoch 96:, loss nan, accuracy 0.506003
+EVAL: After epoch 96: step 384, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 97
+	 	Epoch 97:, loss nan, accuracy 0.479598
+EVAL: After epoch 97: step 388, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 98
+	 	Epoch 98:, loss nan, accuracy 0.501626
+EVAL: After epoch 98: step 392, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 99
+	 	Epoch 99:, loss nan, accuracy 0.571343
+EVAL: After epoch 99: step 396, loss nan, acc 0.378989
+1.23.5
+
+Training epoch 100
+	 	Epoch 100:, loss nan, accuracy 0.503143
+EVAL: After epoch 100: step 400, loss nan, acc 0.378989
+
+
+Best epoch: 39
+Best test accuracy: 0.5492021441459656
+
+
+Best epoch: 23
+Best test loss: 1.0533597392420615
+Saving unimodal activations
+starting multimodal
+train_mask (62, 63)
+train_label (62, 63, 2)
+test_label (31, 63, 2)
+seqlen_train (62,)
+seqlen_test (31,)
+Using GPU -  /device:GPU:0
+Trainable parameters: 241302
+
+Evaluation before training:
+EVAL: epoch 0: step 0, loss 34.1922, acc 0.510638
+
+Training epoch 1
+	 	Epoch 1:, loss 40.4792, accuracy 0.498762
+EVAL: After epoch 1: step 4, loss 1.17336, acc 0.511968, f1 0.631172
+
+Training epoch 2
+	 	Epoch 2:, loss 37.5533, accuracy 0.471951
+EVAL: After epoch 2: step 8, loss 1.14788, acc 0.494681, f1 0.699222
+
+Training epoch 3
+	 	Epoch 3:, loss 33.6125, accuracy 0.495187
+EVAL: After epoch 3: step 12, loss 1.28867, acc 0.517287, f1 0.719756
+
+Training epoch 4
+	 	Epoch 4:, loss 37.5655, accuracy 0.511115
+EVAL: After epoch 4: step 16, loss 1.35033, acc 0.489362, f1 0.711452
+
+Training epoch 5
+	 	Epoch 5:, loss 34.7471, accuracy 0.496972
+EVAL: After epoch 5: step 20, loss 1.31286, acc 0.473404, f1 0.73798
+
+Training epoch 6
+	 	Epoch 6:, loss 35.3444, accuracy 0.509992
+EVAL: After epoch 6: step 24, loss 1.22311, acc 0.5, f1 0.753013
+
+Training epoch 7
+	 	Epoch 7:, loss 31.3221, accuracy 0.588657
+EVAL: After epoch 7: step 28, loss 1.11129, acc 0.526596, f1 0.750169
+
+Training epoch 8
+	 	Epoch 8:, loss 38.3902, accuracy 0.475849
+EVAL: After epoch 8: step 32, loss 1.32176, acc 0.480053, f1 0.756911
+
+Training epoch 9
+	 	Epoch 9:, loss 37.3575, accuracy 0.504328
+EVAL: After epoch 9: step 36, loss 1.18431, acc 0.514628, f1 0.76579
+
+Training epoch 10
+	 	Epoch 10:, loss 39.1666, accuracy 0.479647
+EVAL: After epoch 10: step 40, loss 1.20767, acc 0.484043, f1 0.757997
+
+Training epoch 11
+	 	Epoch 11:, loss 35.9669, accuracy 0.501945
+EVAL: After epoch 11: step 44, loss 1.20829, acc 0.50266, f1 0.757749
+
+Training epoch 12
+	 	Epoch 12:, loss 37.8028, accuracy 0.498687
+EVAL: After epoch 12: step 48, loss 1.26574, acc 0.494681, f1 0.761179
+
+Training epoch 13
+	 	Epoch 13:, loss 37.9153, accuracy 0.481504
+EVAL: After epoch 13: step 52, loss 1.2226, acc 0.482713, f1 0.771799
+
+Training epoch 14
+	 	Epoch 14:, loss 32.4926, accuracy 0.523874
+EVAL: After epoch 14: step 56, loss 1.33149, acc 0.484043, f1 0.771693
+
+Training epoch 15
+	 	Epoch 15:, loss 35.3867, accuracy 0.52256
+EVAL: After epoch 15: step 60, loss 1.17418, acc 0.5, f1 0.769868
+
+Training epoch 16
+	 	Epoch 16:, loss 40.2304, accuracy 0.457461
+EVAL: After epoch 16: step 64, loss 1.20279, acc 0.530585, f1 0.76642
+
+Training epoch 17
+	 	Epoch 17:, loss 37.9177, accuracy 0.500728
+EVAL: After epoch 17: step 68, loss 1.19221, acc 0.49867, f1 0.766877
+
+Training epoch 18
+	 	Epoch 18:, loss 35.9795, accuracy 0.489559
+EVAL: After epoch 18: step 72, loss 1.25651, acc 0.468085, f1 0.760847
+
+Training epoch 19
+	 	Epoch 19:, loss 39.1768, accuracy 0.490391
+EVAL: After epoch 19: step 76, loss 1.33582, acc 0.476064, f1 0.761412
+
+Training epoch 20
+	 	Epoch 20:, loss 36.6927, accuracy 0.488954
+EVAL: After epoch 20: step 80, loss 1.27113, acc 0.462766, f1 0.760629
+
+Training epoch 21
+	 	Epoch 21:, loss 39.0982, accuracy 0.481645
+EVAL: After epoch 21: step 84, loss 1.22704, acc 0.492021, f1 0.760237
+
+Training epoch 22
+	 	Epoch 22:, loss 38.7126, accuracy 0.482983
+EVAL: After epoch 22: step 88, loss 1.17792, acc 0.496011, f1 0.763496
+
+Training epoch 23
+	 	Epoch 23:, loss 32.174, accuracy 0.547016
+EVAL: After epoch 23: step 92, loss 1.04723, acc 0.549202, f1 0.767044
+
+Training epoch 24
+	 	Epoch 24:, loss 36.4657, accuracy 0.494304
+EVAL: After epoch 24: step 96, loss 1.1996, acc 0.477394, f1 0.768773
+
+Training epoch 25
+	 	Epoch 25:, loss 37.5252, accuracy 0.496073
+EVAL: After epoch 25: step 100, loss 1.10172, acc 0.531915, f1 0.762618
+
+Training epoch 26
+	 	Epoch 26:, loss 39.4885, accuracy 0.475419
+EVAL: After epoch 26: step 104, loss 1.22856, acc 0.511968, f1 0.762618
+
+Training epoch 27
+	 	Epoch 27:, loss 34.4616, accuracy 0.518083
+EVAL: After epoch 27: step 108, loss 1.23968, acc 0.473404, f1 0.761719
+
+Training epoch 28
+	 	Epoch 28:, loss 35.0139, accuracy 0.517575
+EVAL: After epoch 28: step 112, loss 1.19988, acc 0.513298, f1 0.763458
+
+Training epoch 29
+	 	Epoch 29:, loss 35.7304, accuracy 0.50738
+EVAL: After epoch 29: step 116, loss 1.16032, acc 0.521277, f1 0.766566
+
+Training epoch 30
+	 	Epoch 30:, loss 35.6336, accuracy 0.530005
+EVAL: After epoch 30: step 120, loss 1.11349, acc 0.507979, f1 0.767964
+
+Training epoch 31
+	 	Epoch 31:, loss 35.9279, accuracy 0.519299
+EVAL: After epoch 31: step 124, loss 1.2414, acc 0.496011, f1 0.765453
+
+Training epoch 32
+	 	Epoch 32:, loss 35.627, accuracy 0.500592
+EVAL: After epoch 32: step 128, loss 1.18149, acc 0.505319, f1 0.764058
+
+Training epoch 33
+	 	Epoch 33:, loss 36.9171, accuracy 0.501167
+EVAL: After epoch 33: step 132, loss 1.11751, acc 0.534574, f1 0.766566
+
+Training epoch 34
+	 	Epoch 34:, loss 36.2824, accuracy 0.511148
+EVAL: After epoch 34: step 136, loss 1.20614, acc 0.480053, f1 0.765167
+
+Training epoch 35
+	 	Epoch 35:, loss 34.1217, accuracy 0.523246
+EVAL: After epoch 35: step 140, loss 1.31265, acc 0.474734, f1 0.765167
+
+Training epoch 36
+	 	Epoch 36:, loss 41.5257, accuracy 0.50413
+EVAL: After epoch 36: step 144, loss 1.24587, acc 0.496011, f1 0.765167
+
+Training epoch 37
+	 	Epoch 37:, loss 37.418, accuracy 0.521436
+EVAL: After epoch 37: step 148, loss 1.12435, acc 0.505319, f1 0.766566
+
+Training epoch 38
+	 	Epoch 38:, loss 39.153, accuracy 0.491783
+EVAL: After epoch 38: step 152, loss 1.23586, acc 0.485372, f1 0.76627
+
+Training epoch 39
+	 	Epoch 39:, loss 37.184, accuracy 0.497604
+EVAL: After epoch 39: step 156, loss 1.17559, acc 0.490691, f1 0.76627
+
+Training epoch 40
+	 	Epoch 40:, loss 36.0162, accuracy 0.513
+EVAL: After epoch 40: step 160, loss 1.21274, acc 0.523936, f1 0.769497
+
+Training epoch 41
+	 	Epoch 41:, loss 37.9924, accuracy 0.50326
+EVAL: After epoch 41: step 164, loss 1.25188, acc 0.50133, f1 0.769885
+
+Training epoch 42
+	 	Epoch 42:, loss 35.1236, accuracy 0.515959
+EVAL: After epoch 42: step 168, loss 1.13331, acc 0.523936, f1 0.766554
+
+Training epoch 43
+	 	Epoch 43:, loss 36.5382, accuracy 0.525551
+EVAL: After epoch 43: step 172, loss 1.14762, acc 0.49867, f1 0.76958
+
+Training epoch 44
+	 	Epoch 44:, loss 36.7015, accuracy 0.495021
+EVAL: After epoch 44: step 176, loss 1.08772, acc 0.531915, f1 0.767036
+
+Training epoch 45
+	 	Epoch 45:, loss 37.8834, accuracy 0.49132
+EVAL: After epoch 45: step 180, loss 1.15608, acc 0.519947, f1 0.766554
+
+Training epoch 46
+	 	Epoch 46:, loss 33.7116, accuracy 0.531759
+EVAL: After epoch 46: step 184, loss nan, acc 0.541223, f1 0.770328
+
+Training epoch 47
+	 	Epoch 47:, loss 36.823, accuracy 0.538346
+EVAL: After epoch 47: step 188, loss 1.07943, acc 0.522606, f1 0.765795
+
+Training epoch 48
+	 	Epoch 48:, loss 35.7904, accuracy 0.496938
+EVAL: After epoch 48: step 192, loss 1.23117, acc 0.469415, f1 0.764739
+
+Training epoch 49
+	 	Epoch 49:, loss 40.604, accuracy 0.470575
+EVAL: After epoch 49: step 196, loss 1.30183, acc 0.505319, f1 0.766008
+
+Training epoch 50
+	 	Epoch 50:, loss 37.1867, accuracy 0.482645
+EVAL: After epoch 50: step 200, loss 1.29955, acc 0.484043, f1 0.766576
+
+
+Best epoch: 23
+Best test accuracy: 0.5492021441459656
+Best epoch loss: 23
+Best test accuracy when loss is least: 0.5492021441459656

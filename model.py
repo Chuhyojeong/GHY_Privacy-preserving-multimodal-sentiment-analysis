@@ -7,34 +7,43 @@ import numpy as np
 
 class LSTM_Model():
 
-    def generate_laplace_noise(self, shape, mean, scale):
+
+    # generating noise
+
+    def generate_laplace_noise(self, shape, mean, scale): # generate laplace noise with fixed scale
         uniform = tf.random.uniform(shape, minval=0, maxval=1, dtype=tf.float32)
-        scale = tf.cast(scale, dtype=tf.float32)
-        with tf.compat.v1.variable_scope("laplace_noise"):
-            noise = scale * tf.sign(uniform - 0.5) * tf.log(1 - 2 * tf.abs(uniform - 0.5))
-        return noise + mean
+        scale = tf.cast(scale, dtype=tf.float32) # transform data type to float32 to equalize with uniform
+        with tf.compat.v1.variable_scope("laplace_noise"): 
+            noise = scale * tf.sign(uniform - 0.5) * tf.log(1 - 2 * tf.abs(uniform - 0.5)) # define noie
+        return noise + mean # mean is the center(mean) of laplace noise distribution
+
+    # initializing part
 
     def __init__(self, input_shape, lr, a_dim, v_dim, t_dim, emotions, attn_fusion=True, unimodal=False,
                  enable_attn_2=False, seed=1234):
         if unimodal:
-            self.input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], input_shape[1]))
+            self.input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], input_shape[1])) # unimodal (audio || video || text)
+            # shape means the dimension of input data
+            # None is batch size, which means the number of processing data at once. It can be manipulated dynamically while model training, so we doesn't assign seperately.
+            # input_data[0] is sequence length, represents how long the input data extends along the time axis.
+            # input_data[1] is feature dimension of input data. 
         else:
-            self.a_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], a_dim))
-            self.v_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], v_dim))
-            self.t_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], t_dim))
-        self.emotions = emotions
+            self.a_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], a_dim)) # acoustic feature (audio data)
+            self.v_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], v_dim)) # visual feature (videa data)
+            self.t_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], t_dim)) # textual feature (text data)
+        self.emotions = emotions # the number of emotions that model will predict
         self.mask = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0]))
         self.seq_len = tf.compat.v1.placeholder(tf.int32, [None, ], name="seq_len")
         self.y = tf.compat.v1.placeholder(tf.int32, [None, input_shape[0], self.emotions], name="y")
-        self.lr = lr
-        self.seed = seed
-        self.attn_fusion = attn_fusion
-        self.unimodal = unimodal
+        self.lr = lr # learning rate
+        self.seed = seed # random seed
+        self.attn_fusion = attn_fusion # whether or not to use attension fusion
+        self.unimodal = unimodal # whether or not to use unimodal mode
         self.lstm_dropout = tf.compat.v1.placeholder(tf.float32, name="lstm_dropout")
         self.dropout = tf.compat.v1.placeholder(tf.float32, name="dropout")
         self.lstm_inp_dropout = tf.compat.v1.placeholder(tf.float32, name="lstm_inp_dropout")
         self.dropout_lstm_out = tf.compat.v1.placeholder(tf.float32, name="dropout_lstm_out")
-        self.attn_2 = enable_attn_2
+        self.attn_2 = enable_attn_2 # Whether or not to activate the second attention layer (Boolean)
 
         # Build the model
         self._build_model_op()
@@ -291,16 +300,18 @@ class LSTM_Model():
                             kernel_regularizer=slim.l2_regularizer(0.001))(self.inter1)
         
         sensitivity = 1 / tf.shape(self.output)[-1]
-        privacy_budget = 0.1
-        laplace_noise = self.generate_laplace_noise(shape=tf.shape(self.output), mean=0.0, scale=sensitivity/privacy_budget)
+        privacy_budget = 0.05
 
-        noisy_output = self.output + laplace_noise
+        NOISE = sensitivity/privacy_budget
+        laplace_noise = self.generate_laplace_noise(shape=tf.shape(self.output), mean=0.0, scale=NOISE)
 
         # print('self.output', self.output.get_shape())
         self.preds = tf.nn.softmax(self.output)
+
+        noisy_output = self.preds + laplace_noise
         # To calculate the number correct, we want to count padded steps as incorrect
         correct = tf.cast(
-            tf.equal(tf.argmax(self.preds, -1, output_type=tf.int32), tf.argmax(self.y, -1, output_type=tf.int32)),
+            tf.equal(tf.argmax(noisy_output, -1, output_type=tf.int32), tf.argmax(self.y, -1, output_type=tf.int32)),
             tf.int32) * tf.cast(self.mask, tf.int32)
 
         # To calculate accuracy we want to divide by the number of non-padded time-steps,

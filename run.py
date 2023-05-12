@@ -404,20 +404,3 @@ if __name__ == "__main__":
 
     epochs = 50
     multimodal(unimodal_activations, args.data, args.classes, args.fusion, args.attention_2, use_raw=args.use_raw)
-
-# 모델 출력
-#model_output = [0.8, 0.6, 0.9, 0.7]
-
-# 모델 출력 sensitivity
-#sensitivity = 1/len(model_output)
-
-# Privacy budget
-#privacy_budget = 0.1
-
-# 각 출력 값에 대한 라플라스 노이즈 생성
-#laplace_noise = np.random.laplace(loc=0, scale=sensitivity/privacy_budget, size=len(model_output))
-
-# 모델 출력에 노이즈 추가
-#noisy_output = model_output + laplace_noise
-
-#print(noisy_output)
