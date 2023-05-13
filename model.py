@@ -10,8 +10,10 @@ class LSTM_Model():
 
     # generating noise
 
-    def generate_laplace_noise(self, shape, mean, scale): # generate laplace noise with fixed scale
+    def generate_laplace_noise(self, shape, mean, privacy_budget): # generate laplace noise with fixed scale
         uniform = tf.random.uniform(shape, minval=0, maxval=1, dtype=tf.float32)
+        sensitivity = 1 / tf.shape(self.output)[-1]
+        scale = sensitivity/privacy_budget
         scale = tf.cast(scale, dtype=tf.float32) # transform data type to float32 to equalize with uniform
         with tf.compat.v1.variable_scope("laplace_noise"): 
             noise = scale * tf.sign(uniform - 0.5) * tf.log(1 - 2 * tf.abs(uniform - 0.5)) # define noie
@@ -19,7 +21,7 @@ class LSTM_Model():
 
     # initializing part
 
-    def __init__(self, input_shape, lr, a_dim, v_dim, t_dim, emotions, attn_fusion=True, unimodal=False,
+    def __init__(self, input_shape, lr, a_dim, v_dim, t_dim, emotions, privacy_budget=0.01, attn_fusion=True, unimodal=False,
                  enable_attn_2=False, seed=1234):
         if unimodal:
             self.input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], input_shape[1])) # unimodal (audio || video || text)
@@ -32,6 +34,7 @@ class LSTM_Model():
             self.v_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], v_dim)) # visual feature (videa data)
             self.t_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], t_dim)) # textual feature (text data)
         self.emotions = emotions # the number of emotions that model will predict
+        self.privacy_budget = privacy_budget
         self.mask = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0]))
         self.seq_len = tf.compat.v1.placeholder(tf.int32, [None, ], name="seq_len")
         self.y = tf.compat.v1.placeholder(tf.int32, [None, input_shape[0], self.emotions], name="y")
@@ -299,11 +302,7 @@ class LSTM_Model():
         self.output = Dense(self.emotions, kernel_initializer=init,
                             kernel_regularizer=slim.l2_regularizer(0.001))(self.inter1)
         
-        sensitivity = 1 / tf.shape(self.output)[-1]
-        privacy_budget = 0.05
-
-        NOISE = sensitivity/privacy_budget
-        laplace_noise = self.generate_laplace_noise(shape=tf.shape(self.output), mean=0.0, scale=NOISE)
+        laplace_noise = self.generate_laplace_noise(shape=tf.shape(self.output), mean=0.0, privacy_budget=self.privacy_budget)
 
         # print('self.output', self.output.get_shape())
         self.preds = tf.nn.softmax(self.output)

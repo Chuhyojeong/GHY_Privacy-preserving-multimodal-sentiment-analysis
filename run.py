@@ -21,15 +21,20 @@ from sklearn.metrics import f1_score
 tf.set_random_seed(seed)
 
 unimodal_activations = {}
+best_accs = {}
 
+for privacy_budget in np.arange(0.01, 1.01, 0.01):
 
-def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_attn_2=False, use_raw=True):
+    print(f"Starting run with privacy_budget={privacy_budget}")
+
+def multimodal(unimodal_activations, data, classes, privacy_budget, attn_fusion=True, enable_attn_2=False, use_raw=True):
+
+    train_data, test_data, audio_train, audio_test, text_train, text_test, video_train, video_test, train_label, test_label, seqlen_train, seqlen_test, train_mask, test_mask = get_raw_data(
+            data, classes)
+    
     if use_raw:
         if attn_fusion:
             attn_fusion = False
-
-        train_data, test_data, audio_train, audio_test, text_train, text_test, video_train, video_test, train_label, test_label, seqlen_train, seqlen_test, train_mask, test_mask = get_raw_data(
-            data, classes)
 
     else:
         print("starting multimodal")
@@ -85,10 +90,7 @@ def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_att
             tf.set_random_seed(seed)
             sess = tf.compat.v1.Session(config=session_conf)
             with sess.as_default():
-                model = LSTM_Model(text_train.shape[1:], 0.0001, a_dim=a_dim, v_dim=v_dim, t_dim=t_dim,
-                                   emotions=classes, attn_fusion=attn_fusion,
-                                   unimodal=False, enable_attn_2=enable_attn_2,
-                                   seed=seed)
+                model = LSTM_Model(train_data.shape[1:], 0.0001, a_dim=train_data.shape[2], v_dim=train_data.shape[2], t_dim=train_data.shape[2], emotions=classes, privacy_budget=privacy_budget, attn_fusion=attn_fusion, seed=seed)
                 sess.run(tf.group(tf.global_variables_initializer(), tf.local_variables_initializer()))
 
                 test_feed_dict = {
@@ -169,7 +171,11 @@ def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_att
                 print(
                     "\n\nBest epoch: {}\nBest test accuracy: {}\nBest epoch loss: {}\nBest test accuracy when loss is least: {}".format(
                         best_epoch, best_acc, best_epoch_loss, best_loss_accuracy))
+                
+    best_accs[privacy_budget] = best_acc
 
+for privacy_budget, best_acc in best_accs.items():
+    print(f"Privacy budget: {privacy_budget}, Best accuracy: {best_acc}")
 
 def unimodal(mode, data, classes):
     classes = int(classes)
