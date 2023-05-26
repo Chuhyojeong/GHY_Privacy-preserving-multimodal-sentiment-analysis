@@ -300,7 +300,7 @@ class LSTM_Model():
                             kernel_regularizer=slim.l2_regularizer(0.001))(self.inter1)
         
         sensitivity = 1 / tf.shape(self.output)[-1]
-        privacy_budget = 0.05
+        privacy_budget = 1.0
 
         NOISE = sensitivity/privacy_budget
         laplace_noise = self.generate_laplace_noise(shape=tf.shape(self.output), mean=0.0, scale=NOISE)

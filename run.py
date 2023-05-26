@@ -404,3 +404,28 @@ if __name__ == "__main__":
 
     epochs = 50
     multimodal(unimodal_activations, args.data, args.classes, args.fusion, args.attention_2, use_raw=args.use_raw)
+
+    import pickle
+    import numpy as np
+    import matplotlib.pyplot as plt
+
+    # .pickle 파일 로드
+    with open('./dataset/mosi/raw/text.pickle', 'rb') as f:
+        text_data = pickle.load(f, encoding='latin1')
+
+    print(text_data)
+
+    # .pickle 파일 로드
+    with open('./dataset/mosi/raw/video.pickle', 'rb') as f:
+        image_data = pickle.load(f, encoding='latin1')
+
+    # 이미지 데이터 하나만 선택
+    image = image_data[0]  # 첫 번째 이미지 데이터 선택
+
+    # 각 채널 평균 계산
+    gray_image = np.mean(image, axis=2)
+
+    # 이미지 출력
+    plt.imshow(gray_image, cmap='gray')
+    plt.axis('off')
+    plt.show()
