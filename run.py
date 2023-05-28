@@ -1,6 +1,8 @@
 import argparse
 import pickle
 import sys
+import torch.optim as optim
+import matplotlib.pyplot as plt
 
 import numpy as np
 
@@ -23,7 +25,7 @@ tf.set_random_seed(seed)
 unimodal_activations = {}
 
 
-def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_attn_2=False, use_raw=True):
+def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_attn_2=False, use_raw=True, privacy_budget = 0.01):
     if use_raw:
         if attn_fusion:
             attn_fusion = False
@@ -88,9 +90,8 @@ def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_att
                 model = LSTM_Model(text_train.shape[1:], 0.0001, a_dim=a_dim, v_dim=v_dim, t_dim=t_dim,
                                    emotions=classes, attn_fusion=attn_fusion,
                                    unimodal=False, enable_attn_2=enable_attn_2,
-                                   seed=seed)
+                                   seed=seed, privacy_budget=privacy_budget)
                 sess.run(tf.group(tf.global_variables_initializer(), tf.local_variables_initializer()))
-
                 test_feed_dict = {
                     model.t_input: text_test,
                     model.a_input: audio_test,
@@ -101,16 +102,16 @@ def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_att
                     model.lstm_dropout: 0.0,
                     model.lstm_inp_dropout: 0.0,
                     model.dropout: 0.0,
-                    model.dropout_lstm_out: 0.0
+                    model.dropout_lstm_out: 0.0,
                 }
 
                 # print('\n\nDataset: %s' % (data))
-                print("\nEvaluation before training:")
+                ##print("\nEvaluation before training:")
                 # Evaluation after epoch
                 step, loss, accuracy = sess.run(
                     [model.global_step, model.loss, model.accuracy],
                     test_feed_dict)
-                print("EVAL: epoch {}: step {}, loss {:g}, acc {:g}".format(0, step, loss, accuracy))
+                ##print("EVAL: epoch {}: step {}, loss {:g}, acc {:g}".format(0, step, loss, accuracy))
 
                 for epoch in range(epochs):
                     epoch += 1
@@ -137,7 +138,8 @@ def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_att
                             model.lstm_dropout: 0.4,
                             model.lstm_inp_dropout: 0.0,
                             model.dropout: 0.2,
-                            model.dropout_lstm_out: 0.2
+                            model.dropout_lstm_out: 0.2,
+
                         }
 
                         _, step, loss, accuracy = sess.run(
@@ -146,7 +148,7 @@ def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_att
                         l.append(loss)
                         a.append(accuracy)
 
-                    print("\t \tEpoch {}:, loss {:g}, accuracy {:g}".format(epoch, np.average(l), np.average(a)))
+                    ##print("\t \tEpoch {}:, loss {:g}, accuracy {:g}".format(epoch, np.average(l), np.average(a)))
                     # Evaluation after epoch
                     step, loss, accuracy, preds, y, mask = sess.run(
                         [model.global_step, model.loss, model.accuracy, model.preds, model.y, model.mask],
@@ -154,10 +156,7 @@ def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_att
                     f1 = f1_score(np.ndarray.flatten(tf.argmax(y, -1, output_type=tf.int32).eval()),
                                   np.ndarray.flatten(tf.argmax(preds, -1, output_type=tf.int32).eval()),
                                   sample_weight=np.ndarray.flatten(tf.cast(mask, tf.int32).eval()), average="weighted")
-                    print("EVAL: After epoch {}: step {}, loss {:g}, acc {:g}, f1 {:g}".format(epoch, step,
-                                                                                               loss / test_label.shape[
-                                                                                                   0],
-                                                                                               accuracy, f1))
+                    ##print("EVAL: After epoch {}: step {}, loss {:g}, acc {:g}, f1 {:g}".format(epoch, step,loss / test_label.shape[0],accuracy, f1))
                     if accuracy > best_acc:
                         best_epoch = epoch
                         best_acc = accuracy
@@ -165,10 +164,13 @@ def multimodal(unimodal_activations, data, classes, attn_fusion=True, enable_att
                         best_loss = loss
                         best_loss_accuracy = accuracy
                         best_epoch_loss = epoch
-
+                        
+                print("privacy_budget: {}\n".format(privacy_budget))
                 print(
-                    "\n\nBest epoch: {}\nBest test accuracy: {}\nBest epoch loss: {}\nBest test accuracy when loss is least: {}".format(
-                        best_epoch, best_acc, best_epoch_loss, best_loss_accuracy))
+                    "\n\nBest epoch: {}\nBest test accuracy: {}\nBest epoch loss: {}\nBest test accuracy when loss is least: {}\nBest loss: {}".format(
+                        best_epoch, best_acc, best_epoch_loss, best_loss_accuracy, best_loss))
+    
+    return best_acc
 
 
 def unimodal(mode, data, classes):
@@ -178,7 +180,7 @@ def unimodal(mode, data, classes):
     # with open('./mosei/text_glove_average.pickle', 'rb') as handle:
     if data == 'mosei' or data == 'mosi':
         with open('./dataset/{0}/raw/{1}_{2}way.pickle'.format(data, mode, classes), 'rb') as handle:
-            u = pickle._Unpickler(handle)
+            u = pickle._Unpickler(handle) # u = 데이터셋
             u.encoding = 'latin1'
             # (train_data, train_label, test_data, test_label, maxlen, train_length, test_length) = u.load()
             if data == 'mosei':
@@ -186,7 +188,7 @@ def unimodal(mode, data, classes):
                  _) = u.load()
                 if classes == 2:
                     train_label, test_label = createOneHotMosei2way(train_label, test_label)
-            elif data == 'mosi':
+            elif data == 'mosi': # 데이터 각 변수로 저장
                 (train_data, train_label, test_data, test_label, maxlen, train_length, test_length) = u.load()
                 train_label = train_label.astype('int')
                 test_label = test_label.astype('int')
@@ -246,14 +248,27 @@ def unimodal(mode, data, classes):
     is_unimodal = True
     with tf.device('/device:GPU:%d' % gpu_device):
         print('Using GPU - ', '/device:GPU:%d' % gpu_device)
+        
         with tf.Graph().as_default():
             tf.set_random_seed(seed)
             sess = tf.compat.v1.Session(config=session_conf)
             with sess.as_default():
                 model = LSTM_Model(train_data.shape[1:], 0.0001, a_dim=0, v_dim=0, t_dim=0, emotions=classes,
                                    attn_fusion=attn_fusion, unimodal=is_unimodal, seed=seed)
-                sess.run(tf.group(tf.global_variables_initializer(), tf.local_variables_initializer()))
 
+                sess.run(tf.group(tf.global_variables_initializer(), tf.local_variables_initializer()))
+                
+                '''optimizer = optim.SGD(
+                    #model.total_parameters, 
+                    #lr=args.lr, 
+                    #momentum=args.momentum, 
+                    model.global_step,
+                    lr=0.1,
+                    momentum=0.9,
+                    weight_decay=0.
+                    #weight_decay=args.weight_decay
+                )'''
+                
                 test_feed_dict = {
                     model.input: test_data,
                     model.y: test_label,
@@ -310,13 +325,15 @@ def unimodal(mode, data, classes):
                             model.dropout_lstm_out: 0.2
 
                         }
+                        # optimizer.zero_grad() # 아래의 backward(), step()에서의 파라미터 변화량 초기화
 
                         _, step, loss, accuracy = sess.run(
                             [model.train_op, model.global_step, model.loss, model.accuracy],
                             feed_dict)
+                        #loss.backward() 지금은 미분이 안됨 loss값이 tensor가 아니라 float으로 나와서
+                        #print("grad :" + loss)
                         l.append(loss)
                         a.append(accuracy)
-
                     print("\t \tEpoch {}:, loss {:g}, accuracy {:g}".format(epoch, np.average(l), np.average(a)))
                     # Evaluation after epoch
                     step, loss, accuracy, test_activations = sess.run(
@@ -379,53 +396,86 @@ if __name__ == "__main__":
     parser.add_argument("--classes", type=str, default=2)
     args, _ = parser.parse_known_args(argv)
 
-    print(args)
 
-    batch_size = 20
-    epochs = 100
-    emotions = args.classes
-    assert args.data in ['mosi', 'mosei', 'iemocap']
-
-    if args.unimodal:
-        print("Training unimodals first")
-        modality = ['text', 'audio', 'video']
-        for mode in modality:
-            unimodal(mode, args.data, args.classes)
-
-        print("Saving unimodal activations")
-        with open('unimodal_{0}_{1}way.pickle'.format(args.data, args.classes), 'wb') as handle:
-            pickle.dump(unimodal_activations, handle, protocol=pickle.HIGHEST_PROTOCOL)
-
-    if not args.use_raw:
-        with open('unimodal_{0}_{1}way.pickle'.format(args.data, args.classes), 'rb') as handle:
-            u = pickle._Unpickler(handle)
-            u.encoding = 'latin1'
-            unimodal_activations = u.load()
-
-    epochs = 50
-    multimodal(unimodal_activations, args.data, args.classes, args.fusion, args.attention_2, use_raw=args.use_raw)
-
-    import pickle
-    import numpy as np
-    import matplotlib.pyplot as plt
-
-    # .pickle 파일 로드
     with open('./dataset/mosi/raw/text.pickle', 'rb') as f:
         text_data = pickle.load(f, encoding='latin1')
-
-    print(text_data)
 
     # .pickle 파일 로드
     with open('./dataset/mosi/raw/video.pickle', 'rb') as f:
         image_data = pickle.load(f, encoding='latin1')
 
     # 이미지 데이터 하나만 선택
-    image = image_data[0]  # 첫 번째 이미지 데이터 선택
-
+    image = image_data[3]  # 첫 번째 이미지 데이터 선택
     # 각 채널 평균 계산
-    gray_image = np.mean(image, axis=2)
+    #gray_image = np.mean(image, axis=2)
 
     # 이미지 출력
-    plt.imshow(gray_image, cmap='gray')
+    plt.figure(figsize=(7, 7))
+    plt.imshow(image, cmap='gray')
     plt.axis('off')
     plt.show()
+    
+    print(args)
+
+    batch_size = 10 # 20
+    epochs = 30 # 100
+    emotions = args.classes
+    assert args.data in ['mosi', 'mosei', 'iemocap']
+
+
+    if args.unimodal:
+        print("Training unimodals first")
+        modality = ['text', 'audio', 'video']
+
+        for mode in modality:
+            unimodal(mode, args.data, args.classes)
+
+        print("Saving unimodal activations")
+        with open('unimodal_{0}_{1}way.pickle'.format(args.data, args.classes), 'wb') as handle:
+            pickle.dump(unimodal_activations, handle, protocol=pickle.HIGHEST_PROTOCOL) 
+            # unimodal에서 수행하여 나온 결과인 unimodal_activations을 pickle파일에 저장
+        with open('unimodal_mosi_2way.pickle', 'rb') as f:
+            image_data = pickle.load(f, encoding='latin1')
+            
+        image = image_data['text_train'][3]
+        plt.figure(figsize=(7, 7))
+        plt.imshow(image, cmap='gray')
+        plt.axis('off')
+        plt.show()
+        
+    if not args.use_raw:
+        with open('unimodal_{0}_{1}way.pickle'.format(args.data, args.classes), 'rb') as handle: # 위에서 저장한 pickle파일을 불러와 u에 저장
+            u = pickle._Unpickler(handle)
+            u.encoding = 'latin1'
+            unimodal_activations = u.load()
+
+    epochs = 25 # 50
+    
+    privacy_budget = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+    acc = []
+    for p in privacy_budget:
+        acc.append(multimodal(unimodal_activations, args.data, args.classes, args.fusion,
+                              args.attention_2, use_raw=args.use_raw, privacy_budget = p))
+                   
+    plt.plot(privacy_budget, acc)
+    plt.show()
+
+
+'''    # .pickle 파일 로드
+    with open('./dataset/mosi/raw/text.pickle', 'rb') as f:
+        text_data = pickle.load(f, encoding='latin1')
+
+    # .pickle 파일 로드
+    with open('./dataset/mosi/raw/video.pickle', 'rb') as f:
+        image_data = pickle.load(f, encoding='latin1')
+
+    # 이미지 데이터 하나만 선택
+    image = image_data[2][0]  # 첫 번째 이미지 데이터 선택
+    # 각 채널 평균 계산
+    #gray_image = np.mean(image, axis=2)
+
+    # 이미지 출력
+    plt.figure(figsize=(7, 7))
+    plt.imshow(image, cmap='gray')
+    plt.axis('off')
+    plt.show()'''

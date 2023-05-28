@@ -7,110 +7,85 @@ import numpy as np
 
 class LSTM_Model():
 
-
-    # generating noise
-
     def generate_laplace_noise(self, shape, mean, scale): # generate laplace noise with fixed scale
         uniform = tf.random.uniform(shape, minval=0, maxval=1, dtype=tf.float32)
-        scale = tf.cast(scale, dtype=tf.float32) # transform data type to float32 to equalize with uniform
-        with tf.compat.v1.variable_scope("laplace_noise"): 
-            noise = scale * tf.sign(uniform - 0.5) * tf.log(1 - 2 * tf.abs(uniform - 0.5)) # define noie
+        scale = tf.cast(scale, dtype=tf.float32) # transform data type to float 32 to equalize with uniform
+        with tf.compat.v1.variable_scope("laplace_noise"):
+            noise = scale * tf.sign(uniform - 0.5) * tf.log(1 - 2 * tf.abs(uniform - 0.5)) # define noise
         return noise + mean # mean is the center(mean) of laplace noise distribution
 
-    # initializing part
-
     def __init__(self, input_shape, lr, a_dim, v_dim, t_dim, emotions, attn_fusion=True, unimodal=False,
-                 enable_attn_2=False, seed=1234):
+                 enable_attn_2=False, seed=1234, privacy_budget = 0.01):
         if unimodal:
-            self.input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], input_shape[1])) # unimodal (audio || video || text)
-            # shape means the dimension of input data
-            # None is batch size, which means the number of processing data at once. It can be manipulated dynamically while model training, so we doesn't assign seperately.
-            # input_data[0] is sequence length, represents how long the input data extends along the time axis.
-            # input_data[1] is feature dimension of input data. 
+            self.input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], input_shape[1]))
         else:
-            self.a_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], a_dim)) # acoustic feature (audio data)
-            self.v_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], v_dim)) # visual feature (videa data)
-            self.t_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], t_dim)) # textual feature (text data)
-        self.emotions = emotions # the number of emotions that model will predict
+            self.a_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], a_dim))
+            self.v_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], v_dim))
+            self.t_input = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0], t_dim))
+        self.privacy_budget = privacy_budget
+        self.emotions = emotions
         self.mask = tf.compat.v1.placeholder(dtype=tf.float32, shape=(None, input_shape[0]))
         self.seq_len = tf.compat.v1.placeholder(tf.int32, [None, ], name="seq_len")
         self.y = tf.compat.v1.placeholder(tf.int32, [None, input_shape[0], self.emotions], name="y")
-        self.lr = lr # learning rate
-        self.seed = seed # random seed
-        self.attn_fusion = attn_fusion # whether or not to use attension fusion
-        self.unimodal = unimodal # whether or not to use unimodal mode
+        self.lr = lr
+        self.seed = seed
+        self.attn_fusion = attn_fusion
+        self.unimodal = unimodal
         self.lstm_dropout = tf.compat.v1.placeholder(tf.float32, name="lstm_dropout")
         self.dropout = tf.compat.v1.placeholder(tf.float32, name="dropout")
         self.lstm_inp_dropout = tf.compat.v1.placeholder(tf.float32, name="lstm_inp_dropout")
         self.dropout_lstm_out = tf.compat.v1.placeholder(tf.float32, name="dropout_lstm_out")
-        self.attn_2 = enable_attn_2 # Whether or not to activate the second attention layer (Boolean)
-
+        self.attn_2 = enable_attn_2
         # Build the model
         self._build_model_op()
         self._initialize_optimizer()
-
+        
     def GRU(self, inputs, output_size, name, dropout_keep_rate):
         with tf.compat.v1.variable_scope('rnn_' + name, reuse=tf.compat.v1.AUTO_REUSE):
             kernel_init = tf.compat.v1.glorot_uniform_initializer(seed=self.seed, dtype=tf.float32)
             bias_init = tf.zeros_initializer()
-
             cell = tf.nn.rnn_cell.GRUCell(output_size, name='gru', reuse=tf.compat.v1.AUTO_REUSE, activation=tf.nn.tanh,
                                           kernel_initializer=kernel_init, bias_initializer=bias_init)
             cell = tf.nn.rnn_cell.DropoutWrapper(cell, output_keep_prob=dropout_keep_rate)
-
             output, _ = tf.nn.dynamic_rnn(cell, inputs, sequence_length=self.seq_len, dtype=tf.float32)
-
             return output
-
     def GRU2(self, inputs, output_size, name, dropout_keep_rate):
         with tf.compat.v1.variable_scope('rnn_' + name, reuse=tf.compat.v1.AUTO_REUSE):
             kernel_init = tf.compat.v1.glorot_uniform_initializer(seed=self.seed, dtype=tf.float32)
             bias_init = tf.zeros_initializer()
-
             fw_cell = tf.nn.rnn_cell.GRUCell(output_size, name='gru', reuse=tf.compat.v1.AUTO_REUSE, activation=tf.nn.tanh,
                                              kernel_initializer=kernel_init, bias_initializer=bias_init)
             fw_cell = tf.nn.rnn_cell.DropoutWrapper(fw_cell, output_keep_prob=dropout_keep_rate)
-
             bw_cell = tf.nn.rnn_cell.GRUCell(output_size, name='gru', reuse=tf.compat.v1.AUTO_REUSE, activation=tf.nn.tanh,
                                              kernel_initializer=kernel_init, bias_initializer=bias_init)
             bw_cell = tf.nn.rnn_cell.DropoutWrapper(bw_cell, output_keep_prob=dropout_keep_rate)
-
             output_fw, _ = tf.nn.dynamic_rnn(fw_cell, inputs, sequence_length=self.seq_len, dtype=tf.float32)
             output_bw, _ = tf.nn.dynamic_rnn(bw_cell, inputs, sequence_length=self.seq_len, dtype=tf.float32)
-
             output = tf.concat([output_fw, output_bw], axis=-1)
             return output
-
     def BiGRU(self, inputs, output_size, name, dropout_keep_rate):
         with tf.compat.v1.variable_scope('rnn_' + name, reuse=tf.compat.v1.AUTO_REUSE):
             kernel_init = tf.compat.v1.glorot_uniform_initializer(seed=self.seed, dtype=tf.float32)
             bias_init = tf.zeros_initializer()
-
             fw_cell = tf.nn.rnn_cell.GRUCell(output_size, name='gru', reuse=tf.compat.v1.AUTO_REUSE, activation=tf.nn.tanh,
                                              kernel_initializer=kernel_init, bias_initializer=bias_init)
             fw_cell = tf.nn.rnn_cell.DropoutWrapper(fw_cell, output_keep_prob=dropout_keep_rate)
-
             # bw_cell = tf.nn.rnn_cell.GRUCell(output_size, name='gru', reuse=tf.compat.v1.AUTO_REUSE, activation=tf.nn.tanh,
             #                                 kernel_initializer=kernel_init, bias_initializer=bias_init)
             # bw_cell = tf.nn.rnn_cell.DropoutWrapper(bw_cell, output_keep_prob=dropout_keep_rate)
-
             outputs, _ = tf.nn.bidirectional_dynamic_rnn(cell_fw=fw_cell, cell_bw=fw_cell, inputs=inputs,
                                                          sequence_length=self.seq_len, dtype=tf.float32)
-
             output_fw, output_bw = outputs
             output = tf.concat([output_fw, output_bw], axis=-1)
             return output
-
     def self_attention(self, inputs_a, inputs_v, inputs_t, name):
         """
-
         :param inputs_a: audio input (B, T, dim)
         :param inputs_v: video input (B, T, dim)
         :param inputs_t: text input (B, T, dim)
         :param name: scope name
         :return:
         """
-
         inputs_a = tf.expand_dims(inputs_a, axis=1)
         inputs_v = tf.expand_dims(inputs_v, axis=1)
         inputs_t = tf.expand_dims(inputs_t, axis=1)
@@ -146,11 +121,9 @@ class LSTM_Model():
                 output = tf.matmul(tf.transpose(t_x, [0, 2, 1]), alphas)
                 output = tf.squeeze(output, -1)
                 outputs.append(output)
-
             final_output = tf.stack(outputs, axis=1)
             # print('final_output', final_output.get_shape())
             return final_output
-
     def attention(self, inputs_a, inputs_b, attention_size, params, mask=None, return_alphas=False):
         """
         inputs_a = (b, 18, 100)
@@ -176,7 +149,6 @@ class LSTM_Model():
             y_proj = inputs_b
             # print('x_proj', x_proj.get_shape())
             # print('y_proj', y_proj.get_shape())
-
             # Trainable parameters
             w_omega = params['w_omega']
             b_omega = params['b_omega']
@@ -184,10 +156,8 @@ class LSTM_Model():
             with tf.compat.v1.variable_scope('v', reuse=tf.compat.v1.AUTO_REUSE):
                 # Applying fully connected layer with non-linear activation to each of the B*T timestamps;
                 #  the shape of `v` is (B,T,D)*(D,A)=(B,T,A), where A=attention_size
-
                 v = tf.tensordot(x_proj, w_omega, axes=1) + b_omega
                 # v  = dense_attention_2(x_proj)
-
             # For each of the timestamps its vector of size A from `v` is reduced with `u` vector
             vu = tf.tanh(tf.matmul(v, tf.expand_dims(y_proj, -1), name='vu'))  # (B,T) shape (B T A) * (B A 1) = (B T)
             vu = tf.squeeze(vu, -1)
@@ -196,7 +166,6 @@ class LSTM_Model():
             # mask = None
             if mask is not None:
                 vu = tf.where(mask, vu, tf.zeros(tf.shape(vu), dtype=tf.float32))
-
             alphas = tf.nn.softmax(vu, 1, name='alphas')  # (B,T) shape
             if mask is not None:
                 alphas = tf.where(mask, alphas, tf.zeros(tf.shape(alphas), dtype=tf.float32))
@@ -205,30 +174,24 @@ class LSTM_Model():
                 case_true = tf.ones(tf.shape(a), tf.float32)
                 a_m = tf.where(condition, case_true, a)
                 alphas = tf.divide(alphas, a_m)
-
             # print('alphas', alphas.get_shape())
-
             # Output of (Bi-)RNN is reduced with attention vector; the result has (B,D) shape
             output = tf.matmul(tf.transpose(inputs_a, [0, 2, 1]), tf.expand_dims(alphas, -1))
             output = tf.squeeze(output, -1)
             # print('r', output.get_shape())
             # output = tf.reduce_sum(r, 1)
-
             if not return_alphas:
                 return tf.expand_dims(output, 1)
             else:
                 return tf.expand_dims(output, 1), alphas
-
     def self_attention_2(self, inputs, name):
         """
-
         :param inputs_a: audio input (B, T, dim)
         :param inputs_v: video input (B, T, dim)
         :param inputs_t: text input (B, T, dim)
         :param name: scope name
         :return:
         """
-
         t = inputs.get_shape()[1].value
         share_param = True
         hidden_size = inputs.shape[-1].value  # D value - hidden size of the RNN layer
@@ -252,13 +215,10 @@ class LSTM_Model():
             outputs = []
             for x in range(t):
                 t_x = inputs[:, x, :]
-
                 output = self.attention(inputs, t_x, hidden_size, params, self.mask)  # (b, d)
                 outputs.append(output)
-
             final_output = tf.concat(outputs, axis=1)
             return final_output
-
     def _build_model_op(self):
         # self attention
         if self.unimodal:
@@ -269,7 +229,6 @@ class LSTM_Model():
                 input = input * tf.expand_dims(self.mask, axis=-1)
             else:
                 input = tf.concat([self.a_input, self.v_input, self.t_input], axis=-1)
-
         # input = tf.nn.dropout(input, 1-self.lstm_inp_dropout)
         self.gru_output = self.BiGRU(input, 100, 'gru', 1 - self.lstm_dropout)
         self.inter = tf.nn.dropout(self.gru_output, 1 - self.dropout_lstm_out)
@@ -298,30 +257,30 @@ class LSTM_Model():
 
         self.output = Dense(self.emotions, kernel_initializer=init,
                             kernel_regularizer=slim.l2_regularizer(0.001))(self.inter1)
-        
+
         sensitivity = 1 / tf.shape(self.output)[-1]
-        privacy_budget = 1.0
+        privacy_budget = self.privacy_budget # epsilon
+        
+        laplace_noise = self.generate_laplace_noise(shape=tf.shape(self.output), mean=0.0, scale=sensitivity/privacy_budget)
 
-        NOISE = sensitivity/privacy_budget
-        laplace_noise = self.generate_laplace_noise(shape=tf.shape(self.output), mean=0.0, scale=NOISE)
-
-        # print('self.output', self.output.get_shape())
         self.preds = tf.nn.softmax(self.output)
-
+        
         noisy_output = self.preds + laplace_noise
+
         # To calculate the number correct, we want to count padded steps as incorrect
         correct = tf.cast(
             tf.equal(tf.argmax(noisy_output, -1, output_type=tf.int32), tf.argmax(self.y, -1, output_type=tf.int32)),
             tf.int32) * tf.cast(self.mask, tf.int32)
-
+        
         # To calculate accuracy we want to divide by the number of non-padded time-steps,
         # rather than taking the mean
         self.accuracy = tf.reduce_sum(tf.cast(correct, tf.float32)) / tf.reduce_sum(tf.cast(self.seq_len, tf.float32))
+        
+        
+        
         # y = tf.argmax(self.y, -1)
-
         loss = tf.nn.softmax_cross_entropy_with_logits_v2(logits=noisy_output, labels=self.y)
         loss = loss * self.mask
-
         self.loss = tf.reduce_sum(loss) / tf.reduce_sum(self.mask)
 
     def _initialize_optimizer(self):
@@ -331,7 +290,6 @@ class LSTM_Model():
         for train_var in train_vars:
             # print(train_var.name)
             reg_loss.append(tf.nn.l2_loss(train_var))
-
             shape = train_var.get_shape()
             variable_parameters = 1
             for dim in shape:
@@ -339,11 +297,9 @@ class LSTM_Model():
             total_parameters += variable_parameters
         # print(total_parameters)
         print('Trainable parameters:', total_parameters)
-
         self.loss = self.loss + 0.00001 * tf.reduce_mean(reg_loss)
         self.global_step = tf.get_variable(shape=[], initializer=tf.constant_initializer(0), dtype=tf.int32,
                                            name='global_step')
         self._optimizer = tf.train.AdamOptimizer(learning_rate=self.lr, beta1=0.9, beta2=0.999)
         # self._optimizer = tf.train.AdadeltaOptimizer(learning_rate=1.0, rho=0.95, epsilon=1e-08)
-
         self.train_op = self._optimizer.minimize(self.loss, global_step=self.global_step)
